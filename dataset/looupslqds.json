@@ -1,0 +1,13 @@
+{
+	"name": "looupslqds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azuresql12",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

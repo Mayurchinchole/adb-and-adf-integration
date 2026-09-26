@@ -1,0 +1,84 @@
+{
+	"name": "data_transformation_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "bronze_notebook",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/mayurchinchole10@outlook.com/bronze_notebook"
+				},
+				"linkedServiceName": {
+					"referenceName": "adlsadb",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "silver_notebook",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "bronze_notebook",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/mayurchinchole10@outlook.com/silver_notebook"
+				},
+				"linkedServiceName": {
+					"referenceName": "adlsadb",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Gold_Notebook",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "silver_notebook",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/mayurchinchole10@outlook.com/gold_notebook"
+				},
+				"linkedServiceName": {
+					"referenceName": "adlsadb",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-09-26T08:46:08Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

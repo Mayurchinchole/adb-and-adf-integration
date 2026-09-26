@@ -1,0 +1,24 @@
+{
+	"name": "orchestration_pipeline_trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "orchestration_pipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 2,
+				"startTime": "2026-09-26T09:47:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

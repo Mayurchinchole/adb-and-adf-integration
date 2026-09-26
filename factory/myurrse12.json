@@ -1,0 +1,15 @@
+{
+	"name": "myurrse12",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "dfaa7314-1e52-4c87-9a8f-e90d845ce729",
+		"tenantId": "0aef9786-f4da-47dc-87ee-6960316abe81"
+	}
+}
