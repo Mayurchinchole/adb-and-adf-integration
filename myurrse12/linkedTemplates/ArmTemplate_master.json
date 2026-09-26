@@ -1,0 +1,105 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "myurrse12"
+		},
+		"AzureDatabricksDeltaLake_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksDeltaLake'"
+		},
+		"adlsadb_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'adlsadb'"
+		},
+		"azuresql12_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'azuresql12'"
+		},
+		"gen2adls_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'gen2adls'"
+		},
+		"adlsadb_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0926-074509-t5jbf9gb"
+		},
+		"azuresql12_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "jupiter12.database.windows.net"
+		},
+		"azuresql12_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "superman"
+		},
+		"azuresql12_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "avd"
+		},
+		"gen2adls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://mayurc103.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "myurrse12_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDatabricksDeltaLake_accessToken": {
+						"value": "[parameters('AzureDatabricksDeltaLake_accessToken')]"
+					},
+					"adlsadb_accessToken": {
+						"value": "[parameters('adlsadb_accessToken')]"
+					},
+					"azuresql12_password": {
+						"value": "[parameters('azuresql12_password')]"
+					},
+					"gen2adls_accountKey": {
+						"value": "[parameters('gen2adls_accountKey')]"
+					},
+					"adlsadb_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('adlsadb_properties_typeProperties_existingClusterId')]"
+					},
+					"azuresql12_properties_typeProperties_server": {
+						"value": "[parameters('azuresql12_properties_typeProperties_server')]"
+					},
+					"azuresql12_properties_typeProperties_database": {
+						"value": "[parameters('azuresql12_properties_typeProperties_database')]"
+					},
+					"azuresql12_properties_typeProperties_userName": {
+						"value": "[parameters('azuresql12_properties_typeProperties_userName')]"
+					},
+					"gen2adls_properties_typeProperties_url": {
+						"value": "[parameters('gen2adls_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
